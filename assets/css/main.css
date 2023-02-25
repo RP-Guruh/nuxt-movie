@@ -1,4 +1,10 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@500&display=swap');
+
+@font-face {
+  font-family: "Segoe UI";
+  src: local(Segoe UI) url("~/assets/fonts/Segoe UI.ttf") format("truetype");
+}
+
 @media (min-width: 720px) {
     .mobile-view {
       max-width: 50%;
