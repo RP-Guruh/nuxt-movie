@@ -18,10 +18,12 @@
 
         <v-slide-group v-model="model" class="" selected-class="bg-success">
           <v-slide-group-item v-for="n in 15" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
-            <SliderMovie v-for="movie in movies" :key="movie.id"
-              :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200" aspectRatio="1/1">
-              <v-card-title class="text-white text-subtitle-2 font-weight-bold" v-text="movie.title"></v-card-title>
-            </SliderMovie>
+            <NuxtLink v-for="movie in movies" :key="movie.id" to="">
+              <SliderMovie :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200" aspectRatio="1/1">
+                <v-card-title class="text-white text-subtitle-2 font-weight-bold" v-text="movie.title"></v-card-title>
+              </SliderMovie>
+            </NuxtLink>
+
           </v-slide-group-item>
         </v-slide-group>
 
