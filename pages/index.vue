@@ -52,11 +52,7 @@
           </v-slide-group-item>
         </v-slide-group>
 
-        <v-row dense class="mt-4">
-          <v-col v-for="n in 8" :key="n" cols="4">
-            <v-sheet color="grey-lighten-2" height="96"></v-sheet>
-          </v-col>
-        </v-row>
+        <WatchingNow></WatchingNow>
       </v-container>
     </v-main>
   </NuxtLayout>
@@ -79,6 +75,7 @@ export default {
   data() {
     return {
       movies: [],
+      model: null,
     };
   },
   mounted() {
