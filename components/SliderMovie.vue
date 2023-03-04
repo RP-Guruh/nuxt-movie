@@ -1,9 +1,8 @@
 <template>
-
-            <v-img :width="width" :class="['ma-2', selectedClass]" aspect-ratio="aspectRatio">
-                <slot />
-            </v-img>
-
+    <v-img :width="width" :class="['ma-2']" aspect-ratio="aspectRatio">
+        <slot />
+    </v-img>
+    
 </template>
 
 <script>

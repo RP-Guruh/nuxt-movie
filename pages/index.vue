@@ -15,42 +15,52 @@
         </div>
 
         <TitleSection styleTitle="text-white font-semibold text-lg tracking-wide" title="Trending Movies"> </TitleSection>
+        <v-lazy :min-height="200" :options="{ 'threshold': 0.5 }" transition="fade-transition">
+          <v-slide-group v-model="model" class="" selected-class="bg-success">
+            <v-slide-group-item v-for="n in 15" :key="n">
+              <NuxtLink v-for="movie in movies" :key="movie.id" :to="`/movie/${movie.id}`">
+                <SliderMovie :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200"
+                  aspectRatio="1/1">
 
-        <v-slide-group v-model="model" class="" selected-class="bg-success">
-          <v-slide-group-item v-for="n in 15" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
-            <NuxtLink v-for="movie in movies" :key="movie.id" to="">
-              <SliderMovie :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200" aspectRatio="1/1">
-                <v-card-title class="text-white text-subtitle-2 font-weight-bold" v-text="movie.title"></v-card-title>
-              </SliderMovie>
-            </NuxtLink>
+                </SliderMovie>
+                <v-card-title class="text-white text-caption font-weight-bold" v-text="movie.title"></v-card-title>
+              </NuxtLink>
 
-          </v-slide-group-item>
-        </v-slide-group>
+            </v-slide-group-item>
+          </v-slide-group>
+        </v-lazy>
 
         <div class="mt-4">
           <TitleSection styleTitle="text-white font-semibold text-lg tracking-wide" title="Watching Now"> </TitleSection>
+          <v-lazy :min-height="200" :options="{ 'threshold': 0.5 }" transition="fade-transition">
+            <v-slide-group v-model="model" class="" selected-class="bg-success">
+              <v-slide-group-item v-for="n in 15" :key="n">
+                <NuxtLink v-for="movie in watchingNow" :key="movie.id" :to="`/movie/${movie.id}`">
+                  <SliderMovie :src="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" width="373"
+                    aspectRatio="16/9">
+                  </SliderMovie>
+                </NuxtLink>
+              </v-slide-group-item>
+            </v-slide-group>
+          </v-lazy>
 
-          <v-slide-group v-model="model" class="" selected-class="bg-success">
-            <v-slide-group-item v-for="n in 15" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
-              <SliderMovie v-for="movie in watchingNow" :key="movie.id"
-                :src="'https://image.tmdb.org/t/p/original' + movie.backdrop_path" width="373" aspectRatio="16/9">
-              </SliderMovie>
-            </v-slide-group-item>
-          </v-slide-group>
         </div>
 
         <div class="mt-4">
           <TitleSection styleTitle="text-white font-semibold text-lg tracking-wide" title="Top Ten TV Series">
           </TitleSection>
+          <v-lazy :min-height="200" :options="{ 'threshold': 0.5 }" transition="fade-transition">
+            <v-slide-group v-model="model" class="" selected-class="bg-success">
+              <v-slide-group-item v-for="n in 15" :key="n">
+                <NuxtLink v-for="movie in tvSeries" :key="movie.id" :to="`/movie/${movie.id}`">
+                  <SliderMovie :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200" aspectRatio="1/1">
 
-          <v-slide-group v-model="model" class="" selected-class="bg-success">
-            <v-slide-group-item v-for="n in 15" :key="n" v-slot="{ isSelected, toggle, selectedClass }">
-              <SliderMovie v-for="movie in tvSeries" :key="movie.id"
-                :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200" aspectRatio="1/1">
-                <v-card-title class="text-white text-subtitle-2 font-weight-bold" v-text="movie.name"></v-card-title>
-              </SliderMovie>
-            </v-slide-group-item>
-          </v-slide-group>
+                  </SliderMovie>
+                  <v-card-title class="text-white text-subtitle-2 font-weight-bold" v-text="movie.name"></v-card-title>
+                </NuxtLink>
+              </v-slide-group-item>
+            </v-slide-group>
+          </v-lazy>
         </div>
 
 
