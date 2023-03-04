@@ -1,7 +1,8 @@
 <template>
     <NuxtLayout :name="layout">
         <div class="max-w-sm overflow-hidden shadow-lg">
-            <img class="3w-full" :src="'https://image.tmdb.org/t/p/original' + detail.backdrop_path" :alt="detail.name">
+            <img class="3w-full" :src="'https://image.tmdb.org/t/p/original' + detail.backdrop_path"
+                alt="Sunset in the mountains">
             <div class="px-6 py-4">
                 <div class="font-bold text-lg text-white mb-2">{{ detail.original_title }}</div>
                 <div class="mb-4 flex">
@@ -21,26 +22,23 @@
                         genre.name }}</span>
 
                 <div class="grid grid-rows-2 grid-flow-col mt-2 mb-6">
-                    <div><span class="font-medium text-xs text-white">Duration</span></div>
-                    <div><span class="font-medium text-xs text-white">{{ detail.runtime }} Minutes </span></div>
+                    <div><span class="font-medium text-xs text-white">Episode</span></div>
+                    <div><span class="font-medium text-xs text-white" v-for="eps in detail.episode_run_time">{{ eps }} </span></div>
 
                     <div><span class="font-medium text-xs text-white">Language</span></div>
                     <div><span class="font-medium text-xs text-white">{{ detail.original_language }} </span></div>
 
                     <div><span class="font-medium text-xs text-white">Country</span></div>
-                    <div><span class="font-medium text-xs text-white" v-for="country in detail.production_countries">{{ country.iso_3166_1 }} </span></div>
-
+                    <div><span class="font-medium text-xs text-white" v-for="country in detail.origin_country">{{ country }} </span></div>
 
                     <div><span class="font-medium text-xs text-white">Released Year</span></div>
-                    <div><span class="font-medium text-xs text-white">{{ new Date(detail.release_date).getFullYear() }}
-                        </span></div>
+                    <div><span class="font-medium text-xs text-white">{{ new Date(detail.first_air_date).getFullYear() }} </span></div>
                 </div>
 
                 <div>
                     <span class="font-semibold text-xl text-white">Description</span>
                     <p class="text-sm text-white text-justify mt-4">{{ detail.overview }} </p>
                 </div>
-
 
                 <div class="mt-6">
                     <span class="font-semibold text-xl text-white">Trailer</span>
@@ -88,7 +86,7 @@ export default {
         return {
             layout: "detail",
             route: useRoute(),
-            url: "https://api.themoviedb.org/3/movie/" + this.$route.params.id,
+            url: "https://api.themoviedb.org/3/tv/" + this.$route.params.id,
             model: null,
             detail: [],
             cast: [],

@@ -51,8 +51,8 @@
           </TitleSection>
           <v-lazy :min-height="200" :options="{ 'threshold': 0.5 }" transition="fade-transition">
             <v-slide-group v-model="model" class="" selected-class="bg-success">
-              <v-slide-group-item v-for="n in 15" :key="n">
-                <NuxtLink v-for="movie in tvSeries" :key="movie.id" :to="`/movie/${movie.id}`">
+              <v-slide-group-item>
+                <NuxtLink v-for="movie in tvSeries" :key="movie.id" :to="`/tv/${movie.id}`">
                   <SliderMovie :src="'https://image.tmdb.org/t/p/original' + movie.poster_path" width="200" aspectRatio="1/1">
 
                   </SliderMovie>
